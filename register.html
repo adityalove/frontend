@@ -1,0 +1,118 @@
+<html>
+<head>
+    <<script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-app.js"></script>
+ <script>
+   // Initialize Firebase
+   var firebaseConfig = {
+    apiKey: "AIzaSyBO8dhvzZTBxDnecBwR3LgXpnXoMe_cTIE",
+    authDomain: "register-fe840.firebaseapp.com",
+    databaseURL: "https://register-fe840.firebaseio.com",
+    projectId: "register-fe840",
+    storageBucket: "register-fe840.appspot.com",
+    messagingSenderId: "1018968616664",
+    appId: "1:1018968616664:web:6e5285ecb1b84b3e"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(Config);
+ </script>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>CONTACT US</title>
+</head><style>
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+	background-color:#99CC66;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+	color:#000000;
+    text-align: center;
+    padding: 14px 16px;
+	text-decoration:blink;
+}
+
+li a:hover {
+background-color:#333333;
+}
+</style>
+
+<body background="untitled.png">
+ <div align="center">
+  <h2><font face="Californian FB"size="+3" style="font-family: 'Permanent Marker', cursive;"  color="#CCCCCC" lang="bg">GAMERS HEAVEN</font>
+    <font face="Californian FB"><br />
+    </font></h2>
+</div>
+<ul>
+  <li><a href="#home">HOME</a></li>
+  <li><a href="CLOTHING.html">TRENDING</a></li>
+  <li><a href="CLOTHING.html">CLOTHING</a></li>
+  <li><a href="SHOES.html">SHOES</a></li>
+    <li><a href="about us.html">ABOUT US</a></li>
+	  <li><a  class="active"href="contact us.html">CONTACT US</a></li>
+</ul>
+
+<br>
+<br>
+<br>
+<h1 align="center" >CONTACT US!!</h1>
+<table align="center" style="width:550px;border:0;" cellpadding="8" cellspacing="0">
+<tr> <td>
+<label for="Name">Name*:</label>
+</td> <td>
+<input name="Name" type="text" id="Name" maxlength="60" style="width:250px;" />
+</td> </tr> <tr> <td>
+<label for="PhoneNumber">Phone number:</label>
+</td> <td>
+<input name="PhoneNumber" type="text" id="PhoneNumber" maxlength="43" style="width:250px;" />
+</td> </tr> <tr> <td>
+<label for="FromEmailAddress">Email address*:</label>
+</td> <td>
+<input name="Email" type="text" id="Email" maxlength="90" style="width:250px;" />
+</td> </tr> <tr> <td>
+<label for="Comments">Comments*:</label>
+</td> <td>
+<textarea id="Comments" name="Comments" rows="7" cols="40" style="width:350px;"></textarea>
+</td> </tr> <tr> <td>
+* - required fields
+</td> <td>
+<button type="button" value="Save" onclick="save_user();">Submit</button>
+</td> </tr>
+</table>
+</form>
+<script>
+function save_user(){
+   var Name = document.getElementById('Name').value;
+   var PhoneNumber = document.getElementById('PhoneNumber').value;
+   var Email = document.getElementById('Email').value;
+   var Comments = document.getElementById('Comments').value;
+    
+  
+   var uid = firebase.database().ref().child('users').push().key;
+   
+   var data = {
+    Name:Name,
+    PhoneNumber:PhoneNumber,
+    Email:Email,
+    Comments:Comments
+   
+   }
+   
+   var updates = {};
+   updates['/users/' + Name] = data;
+   firebase.database().ref().update(updates);
+   
+   alert('Information submit');
+   reload_page();
+  }
+  
+
+</script>
+</body>
+</html>
